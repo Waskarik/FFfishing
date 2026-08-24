@@ -1,10 +1,11 @@
-
+import {Link} from "react-router-dom"
 
 function FishCard({fish}){
     
     
     return(
     <div>
+        <Link to={`/fish/${fish.id}`}>
         <h2>{fish.name}</h2>
             <p>Level: {fish.level}</p>
             <p>Zone: {fish.zone}</p>
@@ -21,6 +22,7 @@ function FishCard({fish}){
                     <li key={index}>{bait}</li>
                 ))}
             </ul>
+            </Link>
             
     </div>
     )
