@@ -1,0 +1,33 @@
+{
+  "tracker": [
+    {
+      "fishId": 4926,
+      "caught": false,
+      "favorite": false,
+      "notes": "",
+      "id": "gB6TuDJhVbc"
+    },
+    {
+      "fishId": 4928,
+      "caught": false,
+      "favorite": false,
+      "notes": "",
+      "id": "MXF6DglWgec"
+    },
+    {
+      "fishId": 4925,
+      "caught": false,
+      "favorite": false,
+      "notes": "",
+      "id": "hgRtqn-gf9s"
+    },
+    {
+      "fishId": 8767,
+      "caught": false,
+      "favorite": false,
+      "notes": "",
+      "id": "2AOPmhTmiSo"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
