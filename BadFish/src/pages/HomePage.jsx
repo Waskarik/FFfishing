@@ -7,12 +7,27 @@ import SearchBar from "../components/SearchBar";
 import FilterBar from "../components/FilterBar";
 import EorzeaClock from "../components/EorzeaClock";
 import { getTrackerEntries } from "../service/trackerService";
+import { isFishAvailableTime, getEorzeaTime } from "../util/eorzeaTime";
 
 function HomePage() {
   const [selectedFish, setSelectedFish] = useState(null);
   const [trackerEntries, setTrackerEntries] = useState([]);
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState("all");
+  const [currentTime, setCurrentTime] = useState(getEorzeaTime());
+  const currentHour = Number(currentTime.split(":")[0])
+  
+  useEffect(()=> {
+  const interval = setInterval(()=>  {
+    setCurrentTime(getEorzeaTime())
+    
+  },1000);  
+  return()=>{ 
+    clearInterval(interval)
+  }
+  },[])
+  
+  
 
   useEffect(() => {
     getTrackerEntries()
@@ -47,7 +62,9 @@ function HomePage() {
       if (!matchesSearch) {
         return false;
       }
-
+      if(filter === "available"){
+        return isFishAvailableTime(fish.startHour, fish.endHour, currentHour);
+      }
       if (filter === "Tracked") {
         return trackedIds.has(fish.id);
       }
@@ -62,7 +79,7 @@ function HomePage() {
 
       return true;
     });
-  }, [query, filter, trackedIds, caughtIds]);
+  }, [query, filter, trackedIds, caughtIds, currentHour]);
 
   function handleTrackerEntryAdded(newEntry) {
     setTrackerEntries((currentEntries) => {
@@ -102,6 +119,13 @@ function HomePage() {
         fish={visibleFish}
         setSelectedFish={setSelectedFish}
       />
+      <button onClick={() => setFilter("all")}>
+  All
+</button>
+
+<button onClick={() => setFilter("available")}>
+  Available
+</button>
     </main>
   );
 }
