@@ -4,13 +4,13 @@
       "fishId": 4925,
       "caught": true,
       "favorite": false,
-      "notes": "",
+      "notes": "Ez tiny thing",
       "id": "PB3a_VNOVHE"
     },
     {
       "fishId": 5046,
-      "caught": false,
-      "favorite": false,
+      "caught": true,
+      "favorite": true,
       "notes": "",
       "id": "h8pMf8suQPs"
     },
@@ -25,7 +25,7 @@
       "fishId": 4870,
       "caught": false,
       "favorite": false,
-      "notes": "",
+      "notes": "Never seen one, must be really rare",
       "id": "ll6HHgmww6M"
     },
     {
@@ -34,6 +34,20 @@
       "favorite": false,
       "notes": "",
       "id": "SaOpKWi0vXk"
+    },
+    {
+      "fishId": 7926,
+      "caught": false,
+      "favorite": false,
+      "notes": "",
+      "id": "G03oUer0vt8"
+    },
+    {
+      "fishId": 7951,
+      "caught": false,
+      "favorite": false,
+      "notes": "",
+      "id": "uIn_8kLSgQ0"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

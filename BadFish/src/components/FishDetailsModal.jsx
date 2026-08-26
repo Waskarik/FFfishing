@@ -1,13 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { addTrackerEntry } from "../service/trackerService";
+import { getMarketPrice } from "../service/universalisService.js";
 
 function FishDetailsModal({
   fish,
   setSelectedFish,
   isTracked,
-  onTrackerEntryAdded
+  onTrackerEntryAdded,
 }) {
   const [isAdding, setIsAdding] = useState(false);
+  const [marketPrice, setMarketPrice] = useState(null);
+
+  useEffect(() => {
+    setMarketPrice(null);
+    getMarketPrice(fish.id)
+      .then((data) => {
+        setMarketPrice(data.minPrice);
+      })
+      .catch((err) =>{
+    console.log(err);
+      })
+  }, [fish.id]);
 
   function handleAddToTracker() {
     if (isTracked || isAdding) {
@@ -18,7 +31,7 @@ function FishDetailsModal({
       fishId: fish.id,
       caught: false,
       favorite: false,
-      notes: ""
+      notes: "",
     };
 
     setIsAdding(true);
@@ -52,13 +65,17 @@ function FishDetailsModal({
         <p>Zone: {fish.zone}</p>
         <p>Spot: {primarySpot || "No spot data"}</p>
         <p>Bait: {baitText || "No bait data"}</p>
-
+        <p>Raiden price: {marketPrice} gil</p>
         <button
           type="button"
           onClick={handleAddToTracker}
           disabled={isTracked || isAdding}
         >
-          {isTracked ? "Already tracked" : isAdding ? "Adding..." : "Add to Tracker"}
+          {isTracked
+            ? "Already tracked"
+            : isAdding
+              ? "Adding..."
+              : "Add to Tracker"}
         </button>
       </div>
     </div>

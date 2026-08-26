@@ -78,7 +78,12 @@ function HomePage() {
       }
 
       return true;
-    });
+    })
+    .sort((a, b) => {
+      if(a.isBigFish && !b.isBigFish) return -1
+      if(!a.isBigFish && b.isBigFish) return 1
+      return 0;
+    })
   }, [query, filter, trackedIds, caughtIds, currentHour]);
 
   function handleTrackerEntryAdded(newEntry) {

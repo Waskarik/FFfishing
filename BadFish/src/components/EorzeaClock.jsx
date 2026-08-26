@@ -7,7 +7,7 @@ function EorzeaClock() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTime(getEorzeaTime());
-    }, 500);
+    }, 1000);
 
     return () => clearInterval(intervalId);
   }, []);
