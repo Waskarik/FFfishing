@@ -1,6 +1,6 @@
 import FishCard from "./FishCard";
 
-function FishList({ fish, setSelectedFish }) {
+function FishList({ fish, setSelectedFish, currentHour }) {
   if (fish.length === 0) {
     return <p>No fish match this search/filter.</p>;
   }
@@ -12,6 +12,7 @@ function FishList({ fish, setSelectedFish }) {
           key={oneFish.id}
           fish={oneFish}
           setSelectedFish={setSelectedFish}
+          currentHour={currentHour}
         />
       ))}
     </div>

@@ -19,7 +19,7 @@ function HomePage() {
   
   useEffect(()=> {
   const interval = setInterval(()=>  {
-    setCurrentTime(getEorzeaTime())
+    setCurrentTime(getEorzeaTime()) 
     
   },1000);  
   return()=>{ 
@@ -80,10 +80,20 @@ function HomePage() {
       return true;
     })
     .sort((a, b) => {
-      if(a.isBigFish && !b.isBigFish) return -1
+      const aAvailable = isFishAvailableTime(a.startHour, a.endHour, currentHour)
+      const bAvailable = isFishAvailableTime(b.startHour, b.endHour, currentHour)
+      const aAllDay = a.startHour === 0 && a.endHour === 24;
+      const bAllDay = b.startHour === 0 && b.endHour === 24;
+      if((a.isBigFish) && !b.isBigFish) return -1
       if(!a.isBigFish && b.isBigFish) return 1
+      if(aAvailable && !bAvailable) return -1
+      if(!aAvailable && bAvailable) return 1
+      if (aAllDay && !bAllDay) return 1;
+      if (!aAllDay && bAllDay) return -1;
+      
       return 0;
     })
+    .slice(0,50)
   }, [query, filter, trackedIds, caughtIds, currentHour]);
 
   function handleTrackerEntryAdded(newEntry) {
@@ -119,10 +129,10 @@ function HomePage() {
           onTrackerEntryAdded={handleTrackerEntryAdded}
         />
       )}
-
       <FishList
         fish={visibleFish}
         setSelectedFish={setSelectedFish}
+        currentHour={currentHour}
       />
       <button onClick={() => setFilter("all")}>
   All

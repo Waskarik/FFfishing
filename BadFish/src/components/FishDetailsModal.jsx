@@ -53,18 +53,25 @@ function FishDetailsModal({
     ? fish.baitPath.join(" → ")
     : fish.baits?.join(", ");
 
+    const isAllDay = fish.startHour === 0 && fish.endHour === 24;
+
   return (
     <div className="modalOverlay" onClick={() => setSelectedFish(null)}>
       <div className="fishModal" onClick={(event) => event.stopPropagation()}>
         <button type="button" onClick={() => setSelectedFish(null)}>
           X
         </button>
+        <img src={fish.iconUrl} alt={fish.name}/>
 
-        <h2>{fish.name}</h2>
+        <h2>
+          {fish.name}
+          {fish.isBigFish && <span style={{color: "gold"  }}>  [ ★ Big Fish ]  </span>}
+          </h2> 
         <p>Level: {fish.level}</p>
         <p>Zone: {fish.zone}</p>
         <p>Spot: {primarySpot || "No spot data"}</p>
         <p>Bait: {baitText || "No bait data"}</p>
+        <p>Time: {isAllDay ? "All Day" : `${fish.startHour}:00 - ${fish.endHour}:00` }</p>
         <p>Raiden price: {marketPrice} gil</p>
         <button
           type="button"

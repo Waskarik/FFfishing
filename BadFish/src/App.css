@@ -204,3 +204,10 @@
   overflow-y: auto;
   box-sizing: border-box;
 }
+.bigFishBadge {
+  padding: 2px 6px;
+  border: 1px solid;
+  color:gold;
+  border-radius: 6px;
+  font-size: 0.75rem;
+}

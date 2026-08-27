@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  deleteTrackerEntry,
-  getTrackerEntries,
-  updateTrackerEntry
-} from "../service/trackerService";
+import { deleteTrackerEntry, getTrackerEntries, updateTrackerEntry } from "../service/trackerService";
 import fishData from "../data/fish.json";
 
 function TrackerPage() {

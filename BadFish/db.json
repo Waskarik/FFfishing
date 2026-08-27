@@ -22,32 +22,18 @@
       "id": "cuTSGwyuyrM"
     },
     {
-      "fishId": 4870,
-      "caught": false,
-      "favorite": false,
-      "notes": "Never seen one, must be really rare",
-      "id": "ll6HHgmww6M"
-    },
-    {
-      "fishId": 4873,
-      "caught": false,
-      "favorite": false,
-      "notes": "",
-      "id": "SaOpKWi0vXk"
-    },
-    {
-      "fishId": 7926,
-      "caught": false,
-      "favorite": false,
-      "notes": "",
-      "id": "G03oUer0vt8"
-    },
-    {
       "fishId": 7951,
+      "caught": true,
+      "favorite": false,
+      "notes": "",
+      "id": "hV-qp483Wvk"
+    },
+    {
+      "fishId": 7689,
       "caught": false,
       "favorite": false,
       "notes": "",
-      "id": "uIn_8kLSgQ0"
+      "id": "5ACGKYKWmpg"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
