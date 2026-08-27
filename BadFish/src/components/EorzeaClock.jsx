@@ -12,7 +12,7 @@ function EorzeaClock() {
     return () => clearInterval(intervalId);
   }, []);
 
-  return <p>Eorzea Time: {time} ET</p>;
+  return <p className="fw-semibold mb-3">Eorzea Time: {time} ET</p>;
 }
 
 export default EorzeaClock;
