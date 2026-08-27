@@ -1,4 +1,4 @@
-const TRACKER_URL = "http://localhost:3001/tracker";
+const TRACKER_URL = "https://fffishing-server.onrender.com/tracker";
 
 export function addTrackerEntry(entry) {
   return fetch(TRACKER_URL, {
